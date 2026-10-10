@@ -192,6 +192,62 @@ void xuatBang(HopDong ds[], int n)
     cout << "=====================================================================================================\n";
 }
 
+void nhapDanhSach(HopDong ds[], int &n)
+{
+    do
+    {
+        cout << "Nhap so luong hop dong (0 < n < 200): ";
+        cin >> n;
+    }
+    while (n <= 0 || n >= 200);
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\n========== HOP DONG THU " << i + 1 << " ==========\n";
+        ds[i].nhap();
+    }
+}
+
+void sapXep(HopDong ds[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (ds[j].hetHanTruoc(ds[i]))
+            {
+                HopDong temp = ds[i];
+                ds[i] = ds[j];
+                ds[j] = temp;
+            }
+        }
+    }
+
+    cout << "\nDa sap xep theo ngay het han tang dan!\n";
+}
+
+void timKiem(HopDong ds[], int n)
+{
+    string ma;
+
+    cin.ignore();
+
+    cout << "Nhap ma hop dong can tim: ";
+    getline(cin, ma);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (ds[i].getMaHD() == ma)
+        {
+            cout << "\n===== HOP DONG TIM THAY =====\n";
+            ds[i].xuat();
+            return;
+        }
+    }
+
+    cout << "\nKhong tim thay hop dong!\n";
+}
+
 void boSung(HopDong ds[], int &n)
 {
     int viTri;
