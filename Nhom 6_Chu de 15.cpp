@@ -97,3 +97,97 @@ void HopDong::xuat()
     cout << "\nLuong co ban: " << luongCoBan;
     cout << "\nPhu cap: " << phuCap << endl;
 }
+
+string HopDong::getMaHD()
+{
+    return maHD;
+}
+
+bool HopDong::hetHanTruoc(HopDong x)
+{
+    return ngayHetHan.nhoHon(x.ngayHetHan);
+}
+
+void trai(string s, int rong)
+{
+    if (s.length() > rong)
+    {
+        cout << s.substr(0, rong - 3) << "...";
+    }
+    else
+    {
+        cout << s;
+
+        for (int i = s.length(); i < rong; i++)
+            cout << " ";
+    }
+}
+
+void phai(long long x, int rong)
+{
+    string s = to_string(x);
+
+    for (int i = s.length(); i < rong; i++)
+        cout << " ";
+
+    cout << s;
+}
+
+void HopDong::xuatDong(int stt)
+{
+    cout << "| ";
+    phai(stt, 3);
+
+    cout << " | ";
+    trai(maHD, 7);
+
+    cout << " | ";
+    trai(hoTen, 16);
+
+    cout << " | ";
+    trai(loaiHD, 10);
+
+    cout << " | ";
+    ngayKy.xuat();
+
+    cout << " | ";
+    ngayHetHan.xuat();
+
+    cout << " | ";
+    phai(luongCoBan, 11);
+
+    cout << " | ";
+    phai(phuCap, 9);
+
+    cout << " |\n";
+}
+
+void xuatBang(HopDong ds[], int n)
+{
+    cout << "\n=====================================================================================================\n";
+
+    cout << "| ";
+    trai("STT", 3);
+    cout << " | ";
+    trai("MA HD", 7);
+    cout << " | ";
+    trai("HO TEN", 16);
+    cout << " | ";
+    trai("LOAI HD", 10);
+    cout << " | ";
+    trai("NGAY KY", 10);
+    cout << " | ";
+    trai("NGAY HET", 10);
+    cout << " | ";
+    trai("LUONG CB", 11);
+    cout << " | ";
+    trai("PHU CAP", 9);
+    cout << " |\n";
+
+    cout << "=====================================================================================================\n";
+
+    for (int i = 0; i < n; i++)
+        ds[i].xuatDong(i + 1);
+
+    cout << "=====================================================================================================\n";
+}
