@@ -39,3 +39,61 @@ bool Ngay::nhoHon(Ngay x)
 
     return ngay < x.ngay;
 }
+
+class HopDong
+{
+private:
+    string maHD, hoTen, loaiHD;
+    Ngay ngayKy, ngayHetHan;
+    long long luongCoBan, phuCap;
+
+public:
+    void nhap();
+    void xuat();
+    void xuatDong(int stt);
+
+    string getMaHD();
+    bool hetHanTruoc(HopDong x);
+};
+
+void HopDong::nhap()
+{
+    cin.ignore();
+
+    cout << "Nhap ma hop dong: ";
+    getline(cin, maHD);
+
+    cout << "Nhap ho ten: ";
+    getline(cin, hoTen);
+
+    cout << "Nhap loai hop dong: ";
+    getline(cin, loaiHD);
+
+    cout << "Nhap ngay ky:\n";
+    ngayKy.nhap();
+
+    cout << "Nhap ngay het han:\n";
+    ngayHetHan.nhap();
+
+    cout << "Nhap luong co ban: ";
+    cin >> luongCoBan;
+
+    cout << "Nhap phu cap: ";
+    cin >> phuCap;
+}
+
+void HopDong::xuat()
+{
+    cout << "Ma HD: " << maHD << endl;
+    cout << "Ho ten: " << hoTen << endl;
+    cout << "Loai HD: " << loaiHD << endl;
+
+    cout << "Ngay ky: ";
+    ngayKy.xuat();
+
+    cout << "\nNgay het han: ";
+    ngayHetHan.xuat();
+
+    cout << "\nLuong co ban: " << luongCoBan;
+    cout << "\nPhu cap: " << phuCap << endl;
+}
