@@ -191,3 +191,121 @@ void xuatBang(HopDong ds[], int n)
 
     cout << "=====================================================================================================\n";
 }
+
+void boSung(HopDong ds[], int &n)
+{
+    int viTri;
+
+    if (n >= 199)
+    {
+        cout << "Danh sach da day!\n";
+        return;
+    }
+
+    cout << "Nhap vi tri can bo sung (1 -> " << n + 1 << "): ";
+    cin >> viTri;
+
+    if (viTri < 1 || viTri > n + 1)
+    {
+        cout << "Vi tri khong hop le!\n";
+        return;
+    }
+
+    for (int i = n; i >= viTri; i--)
+        ds[i] = ds[i - 1];
+
+    cout << "\nNhap hop dong moi:\n";
+    ds[viTri - 1].nhap();
+
+    n++;
+
+    cout << "\nBo sung thanh cong!\n";
+}
+
+void xoa(HopDong ds[], int &n)
+{
+    int viTri;
+
+    if (n == 0)
+    {
+        cout << "Danh sach rong!\n";
+        return;
+    }
+
+    cout << "Nhap vi tri can xoa (1 -> " << n << "): ";
+    cin >> viTri;
+
+    if (viTri < 1 || viTri > n)
+    {
+        cout << "Vi tri khong hop le!\n";
+        return;
+    }
+
+    for (int i = viTri - 1; i < n - 1; i++)
+        ds[i] = ds[i + 1];
+
+    n--;
+
+    cout << "\nXoa thanh cong!\n";
+}
+
+int main()
+{
+    HopDong ds[200];
+    int n = 0;
+    int chon;
+
+    do
+    {
+        cout << "\n\n==================== MENU ====================\n";
+        cout << "1. Nhap danh sach hop dong\n";
+        cout << "2. In danh sach hop dong\n";
+        cout << "3. Sap xep theo ngay het han tang dan\n";
+        cout << "4. Tim kiem theo ma hop dong\n";
+        cout << "5. Bo sung hop dong\n";
+        cout << "6. Xoa hop dong\n";
+        cout << "0. Thoat\n";
+        cout << "===============================================\n";
+
+        cout << "Nhap lua chon: ";
+        cin >> chon;
+
+        switch (chon)
+        {
+        case 1:
+            nhapDanhSach(ds, n);
+            break;
+
+        case 2:
+            xuatBang(ds, n);
+            break;
+
+        case 3:
+            sapXep(ds, n);
+            break;
+
+        case 4:
+            timKiem(ds, n);
+            break;
+
+        case 5:
+            boSung(ds, n);
+            break;
+
+        case 6:
+            xoa(ds, n);
+            break;
+
+        case 0:
+            cout << "\nKet thuc chuong trinh!\n";
+            break;
+
+        default:
+            cout << "\nLua chon khong hop le!\n";
+        }
+
+    }
+    while (chon != 0);
+
+    return 0;
+}
